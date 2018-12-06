@@ -20,9 +20,13 @@ def main():
         claimed.update(get_points(claim))
         claims.append(claim)
     for c in claims:
-        vals = [claimed[p] for p in get_points(claim)]
-        if all([v == 1 for v in vals]):
-            print(c.ref)
+        vals = [claimed[p] for p in get_points(c)]
+        print(f'Sum: {sum(vals)}')
+        print(f'Num: {len(vals)}')
+
+        if sum(vals) == len(vals):
+            print(f'ID: {c.ref}')
+            sys.exit()
 
 
 def parse_claim(line):
